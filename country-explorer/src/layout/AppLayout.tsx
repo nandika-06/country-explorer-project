@@ -1,6 +1,14 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
+import { clearAuthToken } from "../features/auth/auth-storage";
 
-function AppLayout() {
+const AppLayout = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    clearAuthToken();
+    navigate("/login", { replace: true });
+  };
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
       <header className="border-b border-slate-800 bg-slate-900">
@@ -49,9 +57,24 @@ function AppLayout() {
               Settings
             </NavLink>
 
+            <button
+              type="button"
+              className="px-2 py-1 rounded-md text-xs bg-slate-800 border border-slate-700"
+            >
+              Theme
+            </button>
+
             <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-semibold">
               Avatar
             </div>
+
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="px-3 py-1 rounded-md text-xs font-semibold bg-red-500 text-slate-950"
+            >
+              Logout
+            </button>
           </nav>
         </div>
       </header>
@@ -61,6 +84,6 @@ function AppLayout() {
       </main>
     </div>
   );
-}
+};
 
 export default AppLayout;

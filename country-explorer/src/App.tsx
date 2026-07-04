@@ -1,6 +1,7 @@
 import { Suspense, lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import AppLayout from "./layout/AppLayout";
+import ProtectedRoute from "./features/auth/ProtectedRoute";
 
 const LoginPage = lazy(() => import("./pages/LoginPage"));
 const DashboardPage = lazy(() => import("./pages/DashboardPage"));
@@ -21,13 +22,15 @@ function App() {
     >
       <Routes>
         <Route path="/login" element={<LoginPage />} />
-        <Route element={<AppLayout />}>
-          <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/countries" element={<CountriesPage />} />
-          <Route path="/countries/:code" element={<CountryDetailsPage />} />
-          <Route path="/compare" element={<ComparePage />} />
-          <Route path="/favourites" element={<FavouritesPage />} />
-          <Route path="/settings" element={<SettingsPage />} />
+        <Route element={<ProtectedRoute />}>
+          <Route element={<AppLayout />}>
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/countries" element={<CountriesPage />} />
+            <Route path="/countries/:code" element={<CountryDetailsPage />} />
+            <Route path="/compare" element={<ComparePage />} />
+            <Route path="/favourites" element={<FavouritesPage />} />
+            <Route path="/settings" element={<SettingsPage />} />
+          </Route>
         </Route>
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
