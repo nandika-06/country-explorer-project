@@ -1,11 +1,19 @@
 import { useQuery } from "@apollo/client/react";
 import { GET_DASHBOARD_DATA } from "../features/dashboard/dashboard-queries";
+import {
+  getCountriesByContinent,
+  getTopLanguages,
+} from "../features/dashboard/dashboard-utils";
+import { CountriesByContinentChart } from "../features/dashboard/components/CountriesByContinentChart";
+import { TopLanguagesChart } from "../features/dashboard/components/TopLanguagesChart";
+import { useMemo } from "react";
+import type { CountrySummary } from "../features/dashboard/dashboard-types";
 
 const FAV_KEY = "ge_favourites";
 const RECENT_KEY = "ge_recently_viewed";
 
 type DashboardData = {
-  countries: { code: string; name: string }[];
+  countries: CountrySummary[];
   continents: { code: string; name: string }[];
   languages: { code: string; name: string }[];
 };
@@ -42,6 +50,14 @@ const DashboardPage = () => {
   const handleRefresh = () => {
     refetch();
   };
+
+  const continentChartData = useMemo(() => {
+    return getCountriesByContinent(data?.countries ?? []);
+  }, [data]);
+
+  const topLanguagesData = useMemo(() => {
+    return getTopLanguages(data?.countries ?? [], 10);
+  }, [data]);
 
   if (loading) {
     return (
@@ -114,15 +130,9 @@ const DashboardPage = () => {
         />
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4">
-        <div className="p-4 rounded-lg bg-slate-900 border border-slate-800">
-          <h2 className="text-lg font-semibold mb-2">Countries by Continent</h2>
-          <p className="text-sm text-slate-400">Chart</p>
-        </div>
-        <div className="p-4 rounded-lg bg-slate-900 border border-slate-800">
-          <h2 className="text-lg font-semibold mb-2">Top Languages</h2>
-          <p className="text-sm text-slate-400">Chart</p>
-        </div>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <CountriesByContinentChart data={continentChartData} />
+        <TopLanguagesChart data={topLanguagesData} />
       </div>
     </div>
   );
