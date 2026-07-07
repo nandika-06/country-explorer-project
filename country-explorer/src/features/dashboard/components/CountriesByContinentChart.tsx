@@ -7,10 +7,10 @@ import {
   YAxis,
   Bar,
 } from "recharts";
-import type { LanguageCount } from "../dashboard-utils";
+import type { ContinentCount } from "../dashboard-utils";
 
 type Props = {
-  data: LanguageCount[];
+  data: ContinentCount[];
 };
 
 export function CountriesByContinentChart({ data }: Props) {

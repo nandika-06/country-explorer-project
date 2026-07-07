@@ -25,3 +25,5 @@ export type Country = {
   languages: CountryLanguage[];
   states?: CountryState[] | null;
 };
+
+export type CountrySummary = Country;

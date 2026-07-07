@@ -6,10 +6,10 @@ import {
   Cell,
   Legend,
 } from "recharts";
-import type { ContinentCount } from "../dashboard-utils";
+import type { LanguageCount } from "../dashboard-utils";
 
 type Props = {
-  data: ContinentCount[];
+  data: LanguageCount[];
 };
 
 const COLORS = [

@@ -1,10 +1,14 @@
 import { useMemo, useState } from "react";
-import { type SortingState } from "@tanstack/react-table";
+import { useNavigate } from "react-router-dom";
+import { type SortingState, type VisibilityState } from "@tanstack/react-table";
 import { useCountries } from "../features/countries/hooks/useCountries";
 import { useDebounce } from "../features/countries/hooks/useDebounce";
 import { CountriesTable } from "../features/countries/components/CountriesTable";
+import { type Country } from "../features/countries/types";
+import { exportToCsv } from "../utils/csvExport";
 
 function CountriesPage() {
+  const navigate = useNavigate();
   const { data, loading, error, refetch } = useCountries();
 
   const [searchName, setSearchName] = useState("");
@@ -12,6 +16,10 @@ function CountriesPage() {
   const [selectedContinent, setSelectedContinent] = useState("all");
   const [sorting, setSorting] = useState<SortingState>([]);
   console.log(sorting);
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
+    phone: false,
+    statesCount: false,
+  });
 
   const debouncedName = useDebounce(searchName, 300);
   const debouncedCurrency = useDebounce(searchCurrency, 300);
@@ -44,6 +52,24 @@ function CountriesPage() {
     });
   }, [data, debouncedName, debouncedCurrency, selectedContinent]);
 
+  const handleExportCsv = () => {
+    const rows = filteredData.map((country) => ({
+      Flag: country.emoji,
+      Name: country.name,
+      Code: country.code,
+      Capital: country.capital ?? "",
+      Currency: country.currency ?? "",
+      Continent: country.continent.name,
+      Phone: country.phone ?? "",
+      States: country.states?.length ?? 0,
+    }));
+    exportToCsv("countries.csv", rows);
+  };
+
+  const handleRowClick = (country: Country) => {
+    navigate(`/countries/${country.code}`);
+  };
+
   if (loading) {
     return (
       <div className="space-y-4">
@@ -74,6 +100,13 @@ function CountriesPage() {
     <div className="space-y-4">
       <div className="flex items-center justify-between gap-4 flex-wrap">
         <h1 className="text-2xl font-bold">Countries</h1>
+        <button
+          type="button"
+          onClick={handleExportCsv}
+          className="px-4 py-2 rounded bg-emerald-500 text-slate-950 font-semibold cursor-pointer"
+        >
+          Export CSV
+        </button>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -107,6 +140,9 @@ function CountriesPage() {
         data={filteredData}
         sorting={sorting}
         setSorting={setSorting}
+        columnVisibility={columnVisibility}
+        setColumnVisibility={setColumnVisibility}
+        onRowClick={handleRowClick}
       />
     </div>
   );

@@ -1,8 +1,10 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { clearAuthToken } from "../features/auth/auth-storage";
+// import { useTheme } from "../features/theme/ThemeContext";
 
 const AppLayout = () => {
   const navigate = useNavigate();
+  // const { theme, toggleTheme } = useTheme();
 
   const handleLogout = () => {
     clearAuthToken();
@@ -57,12 +59,13 @@ const AppLayout = () => {
               Settings
             </NavLink>
 
-            <button
+            {/* <button
               type="button"
+              onClick={toggleTheme}
               className="px-2 py-1 rounded-md text-xs bg-slate-800 border border-slate-700"
             >
-              Theme
-            </button>
+              {theme === "dark" ? "Dark" : "Light"}
+            </button> */}
 
             <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-semibold">
               Avatar
