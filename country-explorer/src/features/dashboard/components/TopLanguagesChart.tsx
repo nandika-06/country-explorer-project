@@ -23,7 +23,7 @@ const COLORS = [
 
 export function TopLanguagesChart({ data }: Props) {
   return (
-    <div className="h-80 rounded-lg bg-slate-900 border border-slate-800 p-4">
+    <div className="h-80 rounded-lg dark:bg-slate-900 border dark:border-slate-800 border-slate-200 shadow-md p-4">
       <h2 className="text-lg font-semibold mb-4">Top Languages</h2>
 
       <ResponsiveContainer width="100%" height="120%">

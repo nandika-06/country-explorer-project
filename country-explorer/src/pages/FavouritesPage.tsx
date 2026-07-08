@@ -103,7 +103,7 @@ function FavouritesPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search favourites"
-            className="px-3 py-2 rounded bg-slate-900 border border-slate-800 text-sm"
+            className="px-3 py-2 rounded dark:bg-slate-900 border border-slate-800 text-sm"
           />
           {/* <select
             value={sort}
@@ -122,7 +122,7 @@ function FavouritesPage() {
         {favouriteCountries.map((country) => (
           <div
             key={country.code}
-            className="p-4 rounded-lg bg-slate-900 border border-slate-800 flex items-center justify-between gap-3"
+            className="p-4 rounded-lg dark:bg-slate-900 border dark:border-slate-800 border-slate-300 shadow-md flex items-center justify-between gap-3"
           >
             <div
               className="flex items-center gap-3 cursor-pointer"
@@ -132,11 +132,11 @@ function FavouritesPage() {
               <div>
                 <p className="font-semibold">
                   {country.name}{" "}
-                  <span className="text-xs text-slate-400">
+                  <span className="text-xs dark:text-slate-400">
                     ({country.code})
                   </span>
                 </p>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs darrk:text-slate-400">
                   {country.capital ?? "No capital"} · {country.continent.name}
                 </p>
               </div>
@@ -144,7 +144,7 @@ function FavouritesPage() {
             <button
               type="button"
               onClick={() => removeFavourite(country.code)}
-              className="px-3 py-1 rounded bg-slate-800 text-xs cursor-pointer"
+              className="px-3 py-1 rounded dark:bg-slate-800 bg-red-700 text-slate-200  shadow-md text-xs font-semibold cursor-pointer"
             >
               Remove
             </button>

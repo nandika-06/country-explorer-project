@@ -1,10 +1,10 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { clearAuthToken } from "../features/auth/auth-storage";
-// import { useTheme } from "../features/theme/ThemeContext";
+import { useTheme } from "../features/theme/ThemeContext";
 
 const AppLayout = () => {
   const navigate = useNavigate();
-  // const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
 
   const handleLogout = () => {
     clearAuthToken();
@@ -12,8 +12,8 @@ const AppLayout = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
-      <header className="border-b border-slate-800 bg-slate-900">
+    <div className="min-h-screen dark:bg-slate-950  dark:text-slate-100 flex flex-col">
+      <header className="dark:border-b dark:border-slate-800 dark:bg-slate-900 border-slate-300 border-b shadow-md">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <span className="font-bold text-lg">Country Explorer</span>
 
@@ -21,7 +21,9 @@ const AppLayout = () => {
             <NavLink
               to="/dashboard"
               className={({ isActive }) =>
-                isActive ? "text-emerald-400 font-semibold" : "text-slate-200"
+                isActive
+                  ? "text-emerald-400 font-semibold"
+                  : "dark:text-slate-200"
               }
             >
               Dashboard
@@ -29,7 +31,9 @@ const AppLayout = () => {
             <NavLink
               to="/countries"
               className={({ isActive }) =>
-                isActive ? "text-emerald-400 font-semibold" : "text-slate-200"
+                isActive
+                  ? "text-emerald-400 font-semibold"
+                  : "dark:text-slate-200"
               }
             >
               Countries
@@ -37,7 +41,9 @@ const AppLayout = () => {
             <NavLink
               to="/compare"
               className={({ isActive }) =>
-                isActive ? "text-emerald-400 font-semibold" : "text-slate-200"
+                isActive
+                  ? "text-emerald-400 font-semibold"
+                  : "dark:text-slate-200"
               }
             >
               Compare
@@ -45,7 +51,9 @@ const AppLayout = () => {
             <NavLink
               to="/favourites"
               className={({ isActive }) =>
-                isActive ? "text-emerald-400 font-semibold" : "text-slate-200"
+                isActive
+                  ? "text-emerald-400 font-semibold"
+                  : "dark:text-slate-200"
               }
             >
               Favourites
@@ -53,28 +61,30 @@ const AppLayout = () => {
             <NavLink
               to="/settings"
               className={({ isActive }) =>
-                isActive ? "text-emerald-400 font-semibold" : "text-slate-200"
+                isActive
+                  ? "text-emerald-400 font-semibold"
+                  : "dark:text-slate-200"
               }
             >
               Settings
             </NavLink>
 
-            {/* <button
+            <button
               type="button"
               onClick={toggleTheme}
-              className="px-2 py-1 rounded-md text-xs bg-slate-800 border border-slate-700"
+              className="px-2 py-1 rounded-md text-xs dark:bg-slate-800 border border-slate-700 cursor-pointer"
             >
               {theme === "dark" ? "Dark" : "Light"}
-            </button> */}
+            </button>
 
-            <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center text-xs font-semibold">
+            <div className="w-8 h-8 rounded-full dark:bg-slate-700 flex items-center justify-center text-xs font-semibold">
               Avatar
             </div>
 
             <button
               type="button"
               onClick={handleLogout}
-              className="px-3 py-1 rounded-md text-xs font-semibold bg-red-500 text-slate-950"
+              className="px-3 py-1 rounded-md text-xs font-semibold bg-red-500 text-slate-950 cursor-pointer"
             >
               Logout
             </button>

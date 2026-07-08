@@ -86,12 +86,12 @@ function CountriesTableComponent({
 
   return (
     <div className="space-y-4">
-      <div className="rounded-lg border border-slate-800 bg-slate-900 p-4">
+      <div className="rounded-lg border dark:border-slate-800 dark:bg-slate-900 p-4">
         <div className="flex flex-wrap gap-3">
           <button
             type="button"
             onClick={table.getToggleAllColumnsVisibilityHandler()}
-            className="px-3 py-1 rounded bg-slate-800 text-sm"
+            className="px-3 py-1 rounded dark:bg-slate-800 bg-slate-300 text-sm cursor-pointer"
           >
             Toggle All
           </button>
@@ -109,10 +109,10 @@ function CountriesTableComponent({
           ))}
         </div>
       </div>
-      <div className="rounded-lg border border-slate-800 bg-slate-900 overflow-hidden">
+      <div className="rounded-lg border border-slate-800 dark:bg-slate-900 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="min-w-full text-sm">
-            <thead className="bg-slate-800">
+            <thead className="dark:bg-slate-800">
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header) => {
@@ -127,7 +127,7 @@ function CountriesTableComponent({
                           <button
                             type="button"
                             onClick={header.column.getToggleSortingHandler()}
-                            className="flex items-center gap-1"
+                            className="flex items-center gap-1 cursor-pointer"
                           >
                             {flexRender(
                               header.column.columnDef.header,
@@ -168,7 +168,7 @@ function CountriesTableComponent({
         </div>
 
         <div className="flex items-center justify-between gap-4 p-4 border-t border-slate-800">
-          <div className="text-sm text-slate-400">
+          <div className="text-sm dark:text-slate-400">
             Page {table.getState().pagination.pageIndex + 1} of{" "}
             {table.getPageCount()}
           </div>
@@ -178,7 +178,7 @@ function CountriesTableComponent({
               type="button"
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
-              className="px-3 py-1 rounded bg-slate-800 disabled:opacity-50"
+              className="px-3 py-1 rounded dark:bg-slate-800 bg-slate-300 disabled:opacity-50 cursor-pointer"
             >
               Prev
             </button>
@@ -186,7 +186,7 @@ function CountriesTableComponent({
               type="button"
               onClick={() => table.nextPage()}
               disabled={!table.getCanNextPage()}
-              className="px-3 py-1 rounded bg-slate-800 disabled:opacity-50"
+              className="px-3 py-1 rounded dark:bg-slate-800 bg-slate-300 disabled:opacity-50 cursor-pointer"
             >
               Next
             </button>

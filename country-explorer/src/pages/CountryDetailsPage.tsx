@@ -32,7 +32,7 @@ function CountryDetailsPage() {
   const handleCopyCode = async () => {
     if (!code) return;
     await copyToClipboard(data?.country?.phone ?? "");
-    alert("Copied");
+    alert("Country code copied");
   };
 
   if (loading) {
@@ -86,7 +86,7 @@ function CountryDetailsPage() {
           <button
             type="button"
             onClick={handleBack}
-            className="px-3 py-1 rounded bg-slate-800 text-sm cursor-pointer"
+            className="px-3 py-1 rounded dark:bg-slate-800 bg-slate-300 text-sm cursor-pointer"
           >
             ← Back
           </button>
@@ -112,7 +112,7 @@ function CountryDetailsPage() {
           <button
             type="button"
             onClick={handleCopyCode}
-            className="px-3 py-1 rounded bg-slate-800 text-sm cursor-pointer"
+            className="px-3 py-1 rounded dark:bg-slate-800 bg-slate-300  text-sm cursor-pointer"
           >
             Copy Code
           </button>
@@ -131,34 +131,38 @@ function CountryDetailsPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="p-4 rounded-lg bg-slate-900 border border-slate-800">
+        <div className="p-4 rounded-lg dark:bg-slate-800 shadow-md border dark:border-slate-800 border-slate-300">
           <h2 className="text-lg font-semibold mb-3">Basic Info</h2>
           <dl className="space-y-2 text-sm">
             <div className="flex justify-between">
-              <dt className="text-slate-400">Capital</dt>
-              <dd className="text-slate-100">{country.capital ?? "N/A"}</dd>
+              <dt className="dark:text-slate-400">Capital</dt>
+              <dd className="dark:text-slate-100">
+                {country.capital ?? "N/A"}
+              </dd>
             </div>
             <div className="flex justify-between">
-              <dt className="text-slate-400">Currency</dt>
-              <dd className="text-slate-100">{country.currency ?? "N/A"}</dd>
+              <dt className="dark:text-slate-400">Currency</dt>
+              <dd className="dark:text-slate-100">
+                {country.currency ?? "N/A"}
+              </dd>
             </div>
             <div className="flex justify-between">
-              <dt className="text-slate-400">Phone Code</dt>
-              <dd className="text-slate-100">
+              <dt className="dark:text-slate-400">Phone Code</dt>
+              <dd className="dark:text-slate-100">
                 {country.phone ? `+${country.phone}` : "N/A"}
               </dd>
             </div>
             <div className="flex justify-between">
-              <dt className="text-slate-400">Continent</dt>
-              <dd className="text-slate-100">{country.continent.name}</dd>
+              <dt className="dark:text-slate-400">Continent</dt>
+              <dd className="dark:text-slate-100">{country.continent.name}</dd>
             </div>
           </dl>
         </div>
 
-        <div className="p-4 rounded-lg bg-slate-900 border border-slate-800">
+        <div className="p-4 rounded-lg dark:bg-slate-800 shadow-md border dark:border-slate-800 border-slate-300">
           <h2 className="text-lg font-semibold mb-3">Languages</h2>
           {country.languages.length === 0 ? (
-            <p className="text-sm text-slate-400">No languages listed.</p>
+            <p className="text-sm dark:text-slate-400">No languages listed.</p>
           ) : (
             <ul className="list-disc pl-5 text-sm">
               {country.languages.map((lang) => (
@@ -171,7 +175,7 @@ function CountryDetailsPage() {
         </div>
       </div>
 
-      <div className="p-4 rounded-lg bg-slate-900 border border-slate-800">
+      <div className="p-4 rounded-lg dark:bg-slate-800 shadow-md border dark:border-slate-800 border-slate-300">
         <h2 className="text-lg font-semibold mb-3">States</h2>
         {country.states && country.states.length > 0 ? (
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
@@ -182,7 +186,7 @@ function CountryDetailsPage() {
               >
                 {state.name}
                 {state.code && (
-                  <span className="text-slate-400 text-xs ml-2">
+                  <span className="dark:text-slate-400 text-xs ml-2">
                     ({state.code})
                   </span>
                 )}
@@ -190,7 +194,7 @@ function CountryDetailsPage() {
             ))}
           </ul>
         ) : (
-          <p className="text-sm text-slate-400">No states information.</p>
+          <p className="text-sm dark:text-slate-400">No states information.</p>
         )}
       </div>
     </div>

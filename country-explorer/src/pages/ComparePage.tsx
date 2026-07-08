@@ -68,8 +68,8 @@ function ComparePage() {
   if (countriesLoading) {
     return (
       <div className="space-y-4">
-        <div className="h-8 w-48 bg-slate-800 rounded animate-pulse" />
-        <div className="h-40 bg-slate-800 rounded animate-pulse" />
+        <div className="h-8 w-48 dark:bg-slate-800 rounded animate-pulse" />
+        <div className="h-40 dark:bg-slate-800 rounded animate-pulse" />
       </div>
     );
   }
@@ -92,14 +92,14 @@ function ComparePage() {
             type="button"
             onClick={handleSwap}
             disabled={!leftCode && !rightCode}
-            className="px-3 py-2 rounded bg-slate-800 text-sm disabled:opacity-50 cursor-pointer"
+            className="px-3 py-2 rounded dark:bg-slate-800 bg-slate-300 text-sm disabled:opacity-50 cursor-pointer"
           >
             Swap
           </button>
           <button
             type="button"
             onClick={handleReset}
-            className="px-3 py-2 rounded bg-slate-800 text-sm cursor-pointer"
+            className="px-3 py-2 rounded dark:bg-slate-800 bg-slate-300 text-sm cursor-pointer"
           >
             Reset
           </button>
@@ -108,12 +108,12 @@ function ComparePage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-3">
-          <label className="block text-sm text-slate-300">
+          <label className="block text-sm dark:text-slate-300">
             Country A
             <select
               value={leftCode}
               onChange={(e) => handleLeftChange(e.target.value)}
-              className="mt-1 w-full px-3 py-2 rounded bg-slate-900 border border-slate-800"
+              className="mt-1 w-full px-3 py-2 rounded dark:bg-slate-900 border border-slate-800"
             >
               <option value="">Select country</option>
               {sortedCountries.map((c) => (
@@ -135,12 +135,12 @@ function ComparePage() {
         </div>
 
         <div className="space-y-3">
-          <label className="block text-sm text-slate-300">
+          <label className="block text-sm dark:text-slate-300">
             Country B
             <select
               value={rightCode}
               onChange={(e) => handleRightChange(e.target.value)}
-              className="mt-1 w-full px-3 py-2 rounded bg-slate-900 border border-slate-800"
+              className="mt-1 w-full px-3 py-2 rounded dark:bg-slate-900 border border-slate-800"
             >
               <option value="">Select country</option>
               {sortedCountries.map((c) => (
@@ -178,7 +178,7 @@ function CompareCard({
 }) {
   if (loading) {
     return (
-      <div className="p-4 rounded-lg bg-slate-900 border border-slate-800 text-sm text-slate-300">
+      <div className="p-4 rounded-lg dark:bg-slate-900 border border-slate-800 text-sm text-slate-300">
         Loading {label}...
       </div>
     );
@@ -194,7 +194,7 @@ function CompareCard({
 
   if (!country) {
     return (
-      <div className="p-4 rounded-lg bg-slate-900 border border-slate-800 text-sm text-slate-400">
+      <div className="p-4 rounded-lg dark:bg-slate-900 border border-slate-800 text-sm text-slate-400">
         Select {label} to see details.
       </div>
     );
@@ -203,36 +203,40 @@ function CompareCard({
   const languages = country.languages.map((l) => l.name).join(", ");
 
   return (
-    <div className="p-4 rounded-lg bg-slate-900 border border-slate-800 space-y-3">
+    <div className="p-4 rounded-lg dark:bg-slate-900 border dark:border-slate-800 border-slate-300 shadow-md space-y-3">
       <div className="flex items-center gap-3">
         <span className="text-3xl">{country.emoji}</span>
         <div>
           <p className="font-semibold">
             {country.name}{" "}
-            <span className="text-xs text-slate-400">({country.code})</span>
+            <span className="text-xs dark:text-slate-400">
+              ({country.code})
+            </span>
           </p>
-          <p className="text-xs text-slate-400">{country.continent.name}</p>
+          <p className="text-xs dark:text-slate-400">
+            {country.continent.name}
+          </p>
         </div>
       </div>
 
       <dl className="space-y-1 text-sm">
         <div className="flex justify-between">
-          <dt className="text-slate-400">Capital</dt>
-          <dd className="text-slate-100">{country.capital ?? "N/A"}</dd>
+          <dt className="dark:text-slate-400">Capital</dt>
+          <dd className="dark:text-slate-100">{country.capital ?? "N/A"}</dd>
         </div>
         <div className="flex justify-between">
-          <dt className="text-slate-400">Currency</dt>
-          <dd className="text-slate-100">{country.currency ?? "N/A"}</dd>
+          <dt className="dark:text-slate-400">Currency</dt>
+          <dd className="dark:text-slate-100">{country.currency ?? "N/A"}</dd>
         </div>
         <div className="flex justify-between">
-          <dt className="text-slate-400">Phone</dt>
-          <dd className="text-slate-100">
+          <dt className="dark:text-slate-400">Phone</dt>
+          <dd className="dark:text-slate-100">
             {country.phone ? `+${country.phone}` : "N/A"}
           </dd>
         </div>
         <div>
-          <dt className="text-slate-400 mb-1">Languages</dt>
-          <dd className="text-slate-100 text-xs">{languages || "N/A"}</dd>
+          <dt className="dark:text-slate-400 mb-1">Languages</dt>
+          <dd className="dark:text-slate-100 text-xs">{languages || "N/A"}</dd>
         </div>
       </dl>
     </div>

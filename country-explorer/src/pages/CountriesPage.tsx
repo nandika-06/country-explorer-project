@@ -114,18 +114,18 @@ function CountriesPage() {
           value={searchName}
           onChange={(e) => setSearchName(e.target.value)}
           placeholder="Search by country name"
-          className="px-3 py-2 rounded bg-slate-900 border border-slate-800"
+          className="px-3 py-2 rounded dark:bg-slate-900 border border-slate-800"
         />
         <input
           value={searchCurrency}
           onChange={(e) => setSearchCurrency(e.target.value)}
           placeholder="Search by currency"
-          className="px-3 py-2 rounded bg-slate-900 border border-slate-800"
+          className="px-3 py-2 rounded dark;bg-slate-900 border border-slate-800"
         />
         <select
           value={selectedContinent}
           onChange={(e) => setSelectedContinent(e.target.value)}
-          className="px-3 py-2 rounded bg-slate-900 border border-slate-800"
+          className="px-3 py-2 rounded dark:bg-slate-900 border border-slate-800"
         >
           <option value="all">All continents</option>
           {continents.map((continent) => (

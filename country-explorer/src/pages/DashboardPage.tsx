@@ -108,7 +108,7 @@ const DashboardPage = () => {
         <button
           type="button"
           onClick={handleRefresh}
-          className="px-3 py-1 rounded-md text-sm bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition-colors"
+          className="px-3 py-1 rounded-md text-sm bg-emerald-500 text-slate-950 hover:bg-emerald-400 cursor-pointer transition-colors"
         >
           Refresh
         </button>
@@ -146,12 +146,12 @@ type DashboardCardProps = {
 
 function DashboardCard({ label, value, subtle }: DashboardCardProps) {
   return (
-    <div className="p-4 rounded-lg bg-slate-900 border border-slate-800 flex flex-col gap-2">
-      <span className="text-sm text-slate-400">{label}</span>
+    <div className="p-4 rounded-lg dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-md flex flex-col gap-2">
+      <span className="text-sm dark:text-slate-400">{label}</span>
       <span
         className={
           subtle
-            ? "text-xl font-semibold text-slate-100"
+            ? "text-xl font-semibold dark:text-slate-100"
             : "text-2xl font-bold text-emerald-400"
         }
       >
