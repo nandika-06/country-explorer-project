@@ -68,8 +68,8 @@ function ComparePage() {
   if (countriesLoading) {
     return (
       <div className="space-y-4">
-        <div className="h-8 w-48 dark:bg-slate-800 rounded animate-pulse" />
-        <div className="h-40 dark:bg-slate-800 rounded animate-pulse" />
+        <div className="h-8 w-48 dark:bg-slate-800 shadow-md bg-slate-200 rounded animate-pulse" />
+        <div className="h-40 dark:bg-slate-800 shadow-md bg-slate-200 rounded animate-pulse" />
       </div>
     );
   }
@@ -178,7 +178,7 @@ function CompareCard({
 }) {
   if (loading) {
     return (
-      <div className="p-4 rounded-lg dark:bg-slate-900 border border-slate-800 text-sm text-slate-300">
+      <div className="p-4 rounded-lg dark:bg-slate-900 border border-slate-800 text-sm dark:text-slate-300">
         Loading {label}...
       </div>
     );

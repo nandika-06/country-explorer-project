@@ -62,12 +62,12 @@ const DashboardPage = () => {
   if (loading) {
     return (
       <div className="space-y-4">
-        <div className="h-8 w-48 bg-slate-800 rounded animate-pulse" />
+        <div className="h-8 w-48 dark:bg-slate-800 shadow-md bg-slate-200 rounded animate-pulse" />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {Array.from({ length: 5 }).map((_, idx) => (
             <div
               key={idx}
-              className="h-24 bg-slate-800 rounded-lg animate-pulse"
+              className="h-24 dark:bg-slate-800 shadow-md bg-slate-200 rounded-lg animate-pulse"
             />
           ))}
         </div>

@@ -28,7 +28,7 @@ function SettingsPage() {
     <div className="space-y-6">
       <h1 className="text-2xl font-bold">Settings</h1>
 
-      <section className="p-4 rounded-lg dark:bg-slate-900 border border-slate-800">
+      <section className="p-4 rounded-lg dark:bg-slate-900 border dark:border-slate-800 border-slate-300 shadow-md">
         <h2 className="text-lg font-semibold mb-3">Theme</h2>
         <div className="flex items-center gap-4">
           <button
@@ -56,7 +56,7 @@ function SettingsPage() {
         </div>
       </section>
 
-      <section className="space-x-3 p-4 rounded-lg dark:bg-slate-900 border border-slate-800 space-y-3">
+      <section className="space-x-3 p-4 rounded-lg dark:bg-slate-900 border dark:border-slate-800 border-slate-300 shadow-md space-y-3">
         <h2 className="text-lg font-semibold mb-2">Data</h2>
         <button
           type="button"
@@ -74,7 +74,7 @@ function SettingsPage() {
         </button>
       </section>
 
-      <section className="p-4 rounded-lg dark:bg-slate-900 border border-slate-800">
+      <section className="p-4 rounded-lg dark:bg-slate-900 border dark:border-slate-800 border-slate-300 shadow-md">
         <h2 className="text-lg font-semibold mb-2">Danger zone</h2>
         <p className="text-sm text-slate-400 mb-3">
           Resetting the application will clear all preferences, favourites, and

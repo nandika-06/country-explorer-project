@@ -61,8 +61,8 @@ function FavouritesPage() {
   if (loading) {
     return (
       <div className="space-y-4">
-        <div className="h-8 w-48 bg-slate-800 rounded animate-pulse" />
-        <div className="h-40 bg-slate-800 rounded animate-pulse" />
+        <div className="h-8 w-48 dark:bg-slate-800 shadow-md bg-slate-200 rounded animate-pulse" />
+        <div className="h-40 dark:bg-slate-800 shadow-md bg-slate-200 rounded animate-pulse" />
       </div>
     );
   }
